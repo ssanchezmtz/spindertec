@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">SpinderTec</string>
     <string name="action_settings">Settings</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_first_name">Nombre</string>
+    <string name="hint_last_name">Apellido</string>
+    <string name="btn_login">Accesar</string>
+    <string name="btn_register">Crear cuenta</string>
+    <string name="btn_link_to_register">No tienes tu cuenta? Comienza a jugar.</string>
+    <string name="btn_link_to_login">Ya estás registrado! Accesar.</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="btn_logout">Salir</string>
+    <string name="first_name">Nombre</string>
+    <string name="last_name">Apellido</string>
 </resources>

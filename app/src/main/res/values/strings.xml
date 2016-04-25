@@ -13,6 +13,4 @@
     <string name="btn_logout">Salir</string>
     <string name="first_name">Nombre</string>
     <string name="last_name">Apellido</string>
-    <string name="hint_birth_date">Fecha de nacimiento</string>
-    <string name="hint_gender">M o F </string>
 </resources>

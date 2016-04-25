@@ -46,8 +46,8 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        inputFirstName = (EditText) findViewById(R.id.firstname);
-        inputLastName = (EditText) findViewById(R.id.lastname);
+        inputFirstName = (EditText) findViewById(R.id.first_name);
+        inputLastName = (EditText) findViewById(R.id.last_name);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         btnRegister = (Button) findViewById(R.id.btnRegister);
@@ -177,7 +177,7 @@ public class RegisterActivity extends Activity {
             protected Map<String, String> getParams() {
                 // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("fisrt_name", first_name);
+                params.put("first_name", first_name);
                 params.put("last_name", last_name);
                 params.put("email", email);
                 params.put("password", password);

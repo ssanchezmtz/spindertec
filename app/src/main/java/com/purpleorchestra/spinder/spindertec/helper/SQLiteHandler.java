@@ -21,7 +21,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // Database Name
-    private static final String DATABASE_NAME = "purpleor_spindertec\n";
+    private static final String DATABASE_NAME = "purpleor_spindertec";
 
     // Login table name
     private static final String TABLE_USER = "sp_user";
@@ -29,9 +29,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     // Login Table Columns names
     private static final String KEY_ID = "id";
     private static final String KEY_FNAME = "firt_name";
-    private static final String KEY_LNAME = "lsdt_name";
+    private static final String KEY_LNAME = "last_name";
     private static final String KEY_EMAIL = "email";
-    private static final String KEY_UID = "id";
+    private static final String KEY_UID = "uid";
     private static final String KEY_CREATED_AT = "created_at";
 
     public SQLiteHandler(Context context) {
@@ -93,7 +93,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         cursor.moveToFirst();
         if (cursor.getCount() > 0) {
             user.put("first_name", cursor.getString(1));
-            user.put("second_name", cursor.getString(2));
+            user.put("last_name", cursor.getString(2));
             user.put("email", cursor.getString(3));
             user.put("uid", cursor.getString(4));
             user.put("created_at", cursor.getString(5));

@@ -37,6 +37,8 @@ public class RegisterActivity extends Activity {
     private EditText inputLastName;
     private EditText inputEmail;
     private EditText inputPassword;
+    private EditText inputBirthDate;
+    private EditText inputGender;
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
@@ -50,6 +52,8 @@ public class RegisterActivity extends Activity {
         inputLastName = (EditText) findViewById(R.id.lastname);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
+        inputGender = (EditText) findViewById(R.id.gender);
+        inputBirthDate = (EditText) findViewById(R.id.birth_date);
         btnRegister = (Button) findViewById(R.id.btnRegister);
         btnLinkToLogin = (Button) findViewById(R.id.btnLinkToLoginScreen);
 
@@ -79,9 +83,12 @@ public class RegisterActivity extends Activity {
                 String last_name = inputLastName.getText().toString().trim();
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
+                String gender = inputGender.getText().toString().trim();
+                String birthDate = inputBirthDate.getText().toString().trim();
 
-                if (!first_name.isEmpty() && !last_name.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-                    registerUser(first_name, last_name, email, password);
+                if (!first_name.isEmpty() && !last_name.isEmpty() && !email.isEmpty() && !password.isEmpty()
+                        && !gender.isEmpty() && !birthDate.isEmpty()) {
+                    registerUser(first_name, last_name, email, password, gender, birthDate);
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "Please enter your details!", Toast.LENGTH_LONG)
@@ -108,7 +115,7 @@ public class RegisterActivity extends Activity {
      * email, password) to register url
      * */
     private void registerUser(final String first_name, final String last_name, final String email,
-                              final String password) {
+                              final String password, final String gender, final String birthDate) {
         // Tag used to cancel the request
         String tag_string_req = "req_register";
 
@@ -135,11 +142,13 @@ public class RegisterActivity extends Activity {
                         String first_name = user.getString("first_name");
                         String last_name = user.getString("last_name");
                         String email = user.getString("email");
+                        String gender = user.getString("gender");
+                        String birthDate = user.getString("birthDate");
                         String created_at = user
                                 .getString("created_at");
 
                         // Inserting row in users table
-                        db.addUser(first_name, last_name, email, uid, created_at);
+                        db.addUser(first_name, last_name, email, gender, birthDate,uid, created_at);
 
                         Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 
@@ -181,6 +190,8 @@ public class RegisterActivity extends Activity {
                 params.put("last_name", last_name);
                 params.put("email", email);
                 params.put("password", password);
+                params.put("gender", gender);
+                params.put("birthDate", birthDate);
 
                 return params;
             }

@@ -31,6 +31,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String KEY_FNAME = "firt_name";
     private static final String KEY_LNAME = "lsdt_name";
     private static final String KEY_EMAIL = "email";
+    private static final String KEY_GENDER = "gender";
+    private static final String KEY_BIRTHDATE = "birthDate";
     private static final String KEY_UID = "id";
     private static final String KEY_CREATED_AT = "created_at";
 
@@ -43,8 +45,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FNAME + " TEXT,"
-                + KEY_LNAME + " TEXT,"  + KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
-                + KEY_CREATED_AT + " TEXT" + ")";
+                + KEY_LNAME + " TEXT,"  + KEY_EMAIL + " TEXT UNIQUE,"
+                + KEY_GENDER + " TEXT," + KEY_BIRTHDATE + " DATE,"
+                + KEY_UID + " TEXT," + KEY_CREATED_AT + " TEXT" + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
 
         Log.d(TAG, "Database tables created");
@@ -63,14 +66,17 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String first_name, String last_name, String email, String uid, String created_at) {
+    public void addUser(String first_name, String last_name, String email, String gender, String birthDate,
+             String uid, String created_at) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_FNAME, first_name); // First Name
         values.put(KEY_FNAME, last_name); // Last Name
         values.put(KEY_EMAIL, email); // Email
-        values.put(KEY_UID, uid); // Email
+        values.put(KEY_GENDER, gender); // Gender
+        values.put(KEY_BIRTHDATE, birthDate); // BirthDate
+        values.put(KEY_UID, uid); // ID
         values.put(KEY_CREATED_AT, created_at); // Created At
 
         // Inserting Row
@@ -95,8 +101,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
             user.put("first_name", cursor.getString(1));
             user.put("second_name", cursor.getString(2));
             user.put("email", cursor.getString(3));
-            user.put("uid", cursor.getString(4));
-            user.put("created_at", cursor.getString(5));
+            user.put("gender", cursor.getString(4));
+            user.put("birthDate", cursor.getString(5));
+            user.put("uid", cursor.getString(6));
+            user.put("created_at", cursor.getString(7));
         }
         cursor.close();
         db.close();

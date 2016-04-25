@@ -28,7 +28,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     // Login Table Columns names
     private static final String KEY_ID = "id";
-    private static final String KEY_FNAME = "firt_name";
+    private static final String KEY_FNAME = "first_name";
     private static final String KEY_LNAME = "last_name";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_UID = "uid";

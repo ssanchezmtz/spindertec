@@ -9,4 +9,7 @@ public class AppConfig {
 
     // Server user register url
     public static String URL_REGISTER = "http://spinder.purpleorchestra.com/android_login_api/register.php";
+
+    // Server user getSportsbyId url
+    public static String URL_GETSPORTSBYID ="http://spinder.purpleorchestra.com/android_login_api/getSportsNameByUser.php";
 }

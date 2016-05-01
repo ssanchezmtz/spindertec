@@ -17,6 +17,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.purpleorchestra.spinder.spindertec.MainActivity;
 import com.purpleorchestra.spinder.spindertec.R;
 import com.purpleorchestra.spinder.spindertec.app.AppConfig;
 import com.purpleorchestra.spinder.spindertec.app.AppController;
@@ -77,7 +78,8 @@ public class LoginActivity extends Activity {
                 // Check for empty data in the form
                 if (!email.isEmpty() && !password.isEmpty()) {
                     // login user
-                    checkLogin(email, password);
+                    //checkLogin(email, password);
+                        temporalLogin();
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
@@ -100,6 +102,18 @@ public class LoginActivity extends Activity {
         });
 
     }
+
+    /**
+     * temporal function prueba name & age
+     * */
+    private void temporalLogin(){
+        Intent i = new Intent(LoginActivity.this,
+                home.class);
+        startActivity(i);
+        finish();
+    }
+
+
 
     /**
      * function to verify login details in mysql db

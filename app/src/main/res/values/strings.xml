@@ -13,4 +13,9 @@
     <string name="btn_logout">Salir</string>
     <string name="first_name">Nombre</string>
     <string name="last_name">Apellido</string>
+    <string name="title_activity_profile_sport_information">ProfileSportInformation</string>
+    <string name="btn_iniciarPartida">Iniciar partida</string>
+    <string name="btn_back">Back</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

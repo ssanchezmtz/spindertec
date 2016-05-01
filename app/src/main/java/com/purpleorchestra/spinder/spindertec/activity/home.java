@@ -23,12 +23,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.purpleorchestra.spinder.spindertec.R;
 import com.purpleorchestra.spinder.spindertec.Templates.Deportes;
+import com.purpleorchestra.spinder.spindertec.adapter.SportsAdapter;
 import com.purpleorchestra.spinder.spindertec.app.AppConfig;
 import com.purpleorchestra.spinder.spindertec.app.AppController;
 import com.purpleorchestra.spinder.spindertec.helper.SQLiteHandler;
 import com.purpleorchestra.spinder.spindertec.helper.SessionManager;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -45,16 +45,21 @@ public class home extends Activity {
     private ArrayList<String> list;
     private ArrayAdapter<String> adapter;
     private Button btnLogout;
+
+    //sports
     private Deportes[] arrDepSports;
+    private SportsAdapter sportAdapter;
+    private ArrayList<Deportes> alDeportes;
 
     private SQLiteHandler db;
     private SessionManager session;
 
     private ProgressDialog pDialog;
 
+    //SPORT STATIC INFORMATION
+    public static String ID_ACTUAL_SPORT ="-1";
+    public static String SPORT_NAME = "";
 
-    //Prueba
-    String[] namesSports;
 
 
     @Override
@@ -70,18 +75,35 @@ public class home extends Activity {
 
         //loadSports("3");
         list = new ArrayList<String>();
+        alDeportes = new ArrayList<Deportes>();
+
+        //Gridview
+        //adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, list);
+        sportAdapter = new SportsAdapter(this, alDeportes);
+        gvSports.setAdapter(sportAdapter);
+        //gvSports.setAdapter(adapter);
 
 
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, list);
-        gvSports.setAdapter(adapter);
 
         gvSports.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                Toast.makeText(getApplicationContext(),
-                        ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(getApplicationContext(),
+                        ((TextView) v).getText(), Toast.LENGTH_SHORT).show();*/
+
+                /*Toast.makeText(getApplicationContext(),
+                        alDeportes.get(position).id, Toast.LENGTH_SHORT).show();*/
+
+                ID_ACTUAL_SPORT = alDeportes.get(position).id;
+                SPORT_NAME = alDeportes.get(position).name;
+
+
+                Intent i = new Intent(getApplicationContext(), ProfileSportInformation.class);
+                startActivity(i);
+                finish();
             }
         });
+
 
         // Progress dialog
         pDialog = new ProgressDialog(this);
@@ -191,15 +213,14 @@ public class home extends Activity {
 
                             list.add(i-1, sport_name);
                             arrDepSports[i-1] = new Deportes(sport_id, sport_name);
-
+                            alDeportes.add(new Deportes(sport_id, sport_name));
                         }
 
 
 
                         txtName.setText(arrDepSports[1].name);
 
-                        //AQUI SE AGREGARÁ EL ADAPTER
-                         gvSports.setAdapter(adapter);
+                        gvSports.setAdapter(sportAdapter);
 
 
 

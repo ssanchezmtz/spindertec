@@ -48,30 +48,9 @@
             android:id="@+id/homAge"
             android:textSize="24dp" />
 
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:background="@color/btn_logut_bg"
-            android:text="@string/btn_logout"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:layout_above="@+id/home_GridSports" />
-
     </LinearLayout>
 
     //Grid view y grid view items
-
-    <TextView
-        android:id="@+id/sportName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="name"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <GridView
 
@@ -85,5 +64,18 @@
         android:stretchMode="columnWidth"
         android:gravity="center"
         android:layout_below="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/btn_logut_bg"
+        android:text="@string/btn_logout"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

@@ -44,8 +44,8 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
+        inputEmail = (EditText) findViewById(R.id.login_email);
+        inputPassword = (EditText) findViewById(R.id.login_password);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
 
@@ -133,7 +133,7 @@ public class LoginActivity extends Activity {
                         String uid = jObj.getString("uid");
 
                         JSONObject user = jObj.getJSONObject("user");
-                        String fist_name = user.getString("fist_name");
+                        String fist_name = user.getString("first_name");
                         String last_name = user.getString("last_name");
                         String email = user.getString("email");
                         String created_at = user

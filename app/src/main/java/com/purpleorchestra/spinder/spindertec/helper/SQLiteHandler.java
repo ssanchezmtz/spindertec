@@ -68,7 +68,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_FNAME, first_name); // First Name
-        values.put(KEY_FNAME, last_name); // Last Name
+        values.put(KEY_LNAME, last_name); // Last Name
         values.put(KEY_EMAIL, email); // Email
         values.put(KEY_UID, uid); // Email
         values.put(KEY_CREATED_AT, created_at); // Created At

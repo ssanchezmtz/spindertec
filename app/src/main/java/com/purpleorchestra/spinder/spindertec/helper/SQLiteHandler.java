@@ -27,7 +27,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String TABLE_USER = "sp_user";
 
     // Login Table Columns names
-    private static final String KEY_ID = "id";
+    private static final String KEY_ID = "sid";
     private static final String KEY_FNAME = "first_name";
     private static final String KEY_LNAME = "last_name";
     private static final String KEY_EMAIL = "email";
@@ -42,7 +42,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FNAME + " TEXT,"
+                + KEY_ID + " TEXT PRIMARY KEY," + KEY_FNAME + " TEXT,"
                 + KEY_LNAME + " TEXT,"  + KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
                 + KEY_CREATED_AT + " TEXT" + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
@@ -63,10 +63,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String first_name, String last_name, String email, String uid, String created_at) {
+    public void addUser(String userid, String first_name, String last_name, String email, String uid, String created_at) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(KEY_ID, userid); //ID User
         values.put(KEY_FNAME, first_name); // First Name
         values.put(KEY_LNAME, last_name); // Last Name
         values.put(KEY_EMAIL, email); // Email
@@ -92,6 +93,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         // Move to first row
         cursor.moveToFirst();
         if (cursor.getCount() > 0) {
+            user.put("sid",cursor.getString(0));
             user.put("first_name", cursor.getString(1));
             user.put("last_name", cursor.getString(2));
             user.put("email", cursor.getString(3));

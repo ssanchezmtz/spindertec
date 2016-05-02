@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class ProfileSportInformation extends Activity {
 
-    private static final String TAG = RegisterActivity.class.getSimpleName();
+    private static final String TAG = ProfileSportInformation.class.getSimpleName();
     private TextView txtSportName;
     private TextView txtSportScore;
     private TextView txtSportLevel;
@@ -70,7 +70,7 @@ public class ProfileSportInformation extends Activity {
 
 
         txtSportName.setText(home.SPORT_NAME);
-        loadSportDetails("3", home.ID_ACTUAL_SPORT);
+        loadSportDetails("1", home.ID_ACTUAL_SPORT);
 
         // btn Return profile
         btnReturnHome.setOnClickListener(new View.OnClickListener() {

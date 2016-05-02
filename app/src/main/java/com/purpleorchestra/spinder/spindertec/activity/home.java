@@ -37,7 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class home extends Activity {
-    private static final String TAG = RegisterActivity.class.getSimpleName();
+    private static final String TAG = home.class.getSimpleName();
     private TextView txtName;
     private TextView txtEmail;
     private TextView txtAge;
@@ -67,8 +67,8 @@ public class home extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        txtName = (TextView) findViewById(R.id.username);
-        txtEmail = (TextView) findViewById(R.id.email);
+        txtName = (TextView) findViewById(R.id.home_username);
+        txtEmail = (TextView) findViewById(R.id.home_email);
         txtAge = (TextView) findViewById(R.id.homAge);
         btnLogout = (Button) findViewById(R.id.btnLogout);
         gvSports = (GridView) findViewById(R.id.home_GridSports);
@@ -127,19 +127,19 @@ public class home extends Activity {
 
         // Fetching user details from sqlite
         HashMap<String, String> user = db.getUserDetails();
-
+        String usid = user.get("sid");
         String first_name = user.get("first_name");
         String last_name = user.get("last_name");
         String name = first_name + " " + last_name;
         String email = user.get("email");
-        String age = user.toString();
+        String age = "22"; //user.toString();
 
         // Displaying the user details on the screen
         txtName.setText(name);
         txtEmail.setText(email);
         txtAge.setText(age);
 
-        loadSports("3");
+        loadSports(usid);
 
 
         // Logout button click event
@@ -181,7 +181,7 @@ public class home extends Activity {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Login Response: " + response.toString());
+                Log.d(TAG, "Get Sports: " + response.toString());
                 hideDialog();
 
                 //txtName.setText("HI");
@@ -203,6 +203,8 @@ public class home extends Activity {
                         String sport_name;
                         //txtName.setText(sports.length());
 
+                        Log.d(TAG, "Get Sports size: " + sports.length());
+                        hideDialog();
 
                         arrDepSports= new Deportes[sports.length()];
                        // namesSports = new String[sports.length()-1];

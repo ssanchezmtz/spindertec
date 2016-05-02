@@ -206,8 +206,9 @@ public class home extends Activity {
                         Log.d(TAG, "Get Sports size: " + sports.length());
                         hideDialog();
 
-                        arrDepSports= new Deportes[sports.length()];
+                        arrDepSports= new Deportes[sports.length()-1];
                        // namesSports = new String[sports.length()-1];
+
 
                         for(int i=1; i<sports.length(); i++){
                             sport_id = sports.getJSONObject(Integer.toString(i)).getString("id");
@@ -220,7 +221,7 @@ public class home extends Activity {
 
 
 
-                        txtName.setText(arrDepSports[1].name);
+                        //txtName.setText(arrDepSports[1].name);
 
                         gvSports.setAdapter(sportAdapter);
 
@@ -229,7 +230,7 @@ public class home extends Activity {
                         // Inserting row in users table
                        // db.addUser(first_name, last_name, email, uid, created_at);
 
-                        Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
+                         Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG);
 
 
                     } else {

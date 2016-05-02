@@ -123,7 +123,7 @@ public class ProfileSportInformation extends Activity {
 
                         txtSportScore.setText(sportScore);
                         txtSportLevel.setText(sportLevel);
-                        Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG);
 
 
                     } else {

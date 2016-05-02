@@ -132,6 +132,7 @@ public class RegisterActivity extends Activity {
                         String uid = jObj.getString("uid");
 
                         JSONObject user = jObj.getJSONObject("user");
+                        String usid = user.getString("id");
                         String first_name = user.getString("first_name");
                         String last_name = user.getString("last_name");
                         String email = user.getString("email");
@@ -139,7 +140,7 @@ public class RegisterActivity extends Activity {
                                 .getString("created_at");
 
                         // Inserting row in users table
-                        db.addUser(first_name, last_name, email, uid, created_at);
+                        db.addUser(usid, first_name, last_name, email, uid, created_at);
 
                         Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 

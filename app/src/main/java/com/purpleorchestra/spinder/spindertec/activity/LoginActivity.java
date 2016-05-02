@@ -17,7 +17,6 @@ import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.purpleorchestra.spinder.spindertec.MainActivity;
 import com.purpleorchestra.spinder.spindertec.R;
 import com.purpleorchestra.spinder.spindertec.app.AppConfig;
 import com.purpleorchestra.spinder.spindertec.app.AppController;
@@ -31,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends Activity {
-    private static final String TAG = RegisterActivity.class.getSimpleName();
+    private static final String TAG = LoginActivity.class.getSimpleName();
     private Button btnLogin;
     private Button btnLinkToRegister;
     private EditText inputEmail;
@@ -45,8 +44,8 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
+        inputEmail = (EditText) findViewById(R.id.login_email);
+        inputPassword = (EditText) findViewById(R.id.login_password);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
 
@@ -78,8 +77,8 @@ public class LoginActivity extends Activity {
                 // Check for empty data in the form
                 if (!email.isEmpty() && !password.isEmpty()) {
                     // login user
-                    //checkLogin(email, password);
-                        temporalLogin();
+                    checkLogin(email, password);
+                    // temporalLogin();
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
@@ -147,14 +146,15 @@ public class LoginActivity extends Activity {
                         String uid = jObj.getString("uid");
 
                         JSONObject user = jObj.getJSONObject("user");
-                        String fist_name = user.getString("fist_name");
+                        String userid = user.getString("id");
+                        String fist_name = user.getString("first_name");
                         String last_name = user.getString("last_name");
                         String email = user.getString("email");
                         String created_at = user
                                 .getString("created_at");
 
                         // Inserting row in users table
-                        db.addUser(fist_name, last_name, email, uid, created_at);
+                        db.addUser(userid, fist_name, last_name, email, uid, created_at);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,

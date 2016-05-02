@@ -21,7 +21,7 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/username"
+            android:id="@+id/home_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -34,7 +34,7 @@
             android:layout_alignStart="@+id/linearLayout" />
 
         <TextView
-            android:id="@+id/email"
+            android:id="@+id/home_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13dp"

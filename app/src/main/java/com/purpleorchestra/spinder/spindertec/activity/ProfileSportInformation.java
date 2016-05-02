@@ -73,6 +73,15 @@ public class ProfileSportInformation extends Activity {
         loadSportDetails("3", home.ID_ACTUAL_SPORT);
 
         // btn Return profile
+        btnCrearPartido.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent i = new Intent(ProfileSportInformation.this, PopFriendsOrRandom.class);
+                startActivity(i);
+            }
+        });
+
+
         btnReturnHome.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
@@ -82,6 +91,7 @@ public class ProfileSportInformation extends Activity {
                 finish();
             }
         });
+
 
     }
 

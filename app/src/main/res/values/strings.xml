@@ -18,4 +18,5 @@
     <string name="btn_back">Back</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_pop_friends_or_random">PopFriendsOrRandom</string>
 </resources>

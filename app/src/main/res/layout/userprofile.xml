@@ -20,7 +20,7 @@
             android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="logo_login"
+            android:src="@drawable/edit_profile_image"
             android:layout_marginBottom="@dimen/pad_30dp" />
 
         <EditText
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/pad_20dp"
-            android:drawableLeft="ic_username"
+            android:drawableLeft="userprofile_username"
             android:hint="Username" >
 
             <requestFocus />

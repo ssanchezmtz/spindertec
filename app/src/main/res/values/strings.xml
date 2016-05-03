@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">SpinderTec</string>
     <string name="action_settings">Settings</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="FirstName">firstname</string>
+    <string name="LastName">lastname</string>
+    <string name="DateOfBirth">dateofbirth</string>
+    <string name="Gender">gender</string>
+    <string name="ThePassword">password</string>
 </resources>

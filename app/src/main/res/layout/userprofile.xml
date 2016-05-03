@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.purpleorchestra.spinder.spindertec.MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/pad_20dp"
+        android:paddingLeft="@dimen/pad_15dp"
+        android:paddingRight="@dimen/pad_15dp"
+        android:paddingTop="@dimen/pad_20dp" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="logo_login"
+            android:layout_marginBottom="@dimen/pad_30dp" />
+
+        <EditText
+            android:id="@+id/user"
+            style="@style/editext_graybg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pad_20dp"
+            android:drawableLeft="ic_username"
+            android:hint="Username" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/first_name"
+            style="@style/editext_graybg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pad_20dp"
+            android:drawableLeft="ic_first_name"
+            android:hint="First Name" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/last_name"
+            style="@style/editext_graybg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pad_20dp"
+            android:drawableLeft="ic_last_name"
+            android:hint="Last Name" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/dob"
+            style="@style/editext_graybg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pad_20dp"
+            android:drawableLeft="ic_dob"
+            android:hint="Date of Birth" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/esx"
+            style="@style/editext_graybg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pad_20dp"
+            android:drawableLeft="ic_gender"
+            android:hint="Gender" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/pwd"
+            style="@style/editext_graybg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pad_30dp"
+            android:layout_marginTop="@dimen/pad_5dp"
+            android:drawableLeft="ic_pwd"
+            android:hint="password"
+            android:inputType="textPassword" >
+        </EditText>
+
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btnReg"
+                style="@style/btn_white_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Save"
+                android:layout_marginLeft="@dimen/pad_10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

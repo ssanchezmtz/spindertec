@@ -117,7 +117,6 @@ public class ProfileSportInformation extends Activity {
 
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
-                    txtSportLevel.setText("ALI");
 
 
                     if (!error) {

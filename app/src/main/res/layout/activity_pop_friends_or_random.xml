@@ -8,19 +8,26 @@
     android:background="#ffff3da0"
     android:id="@+id/pop">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView" />
-
-    <TextView
+    
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="AMIGOS"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
+        android:text = "Friends"
+        android:id="@+id/btnFriends"
+        android:layout_below="@+id/btnRandom"
+        android:layout_centerVertical = "true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="178dp"
-        android:textSize="30dp" />
+    />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "Random"
+        android:id="@+id/btnRandom"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical = "true"
+        android:layout_centerHorizontal="true"
+        />
 
 </RelativeLayout>

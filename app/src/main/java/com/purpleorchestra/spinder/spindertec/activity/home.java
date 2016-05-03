@@ -42,12 +42,10 @@ public class home extends Activity {
     private TextView txtEmail;
     private TextView txtAge;
     private GridView gvSports;
-    private ArrayList<String> list;
-    private ArrayAdapter<String> adapter;
     private Button btnLogout;
+    private Button btnCheckReservations;
 
     //sports
-    private Deportes[] arrDepSports;
     private SportsAdapter sportAdapter;
     private ArrayList<Deportes> alDeportes;
 
@@ -72,27 +70,23 @@ public class home extends Activity {
         txtAge = (TextView) findViewById(R.id.homAge);
         btnLogout = (Button) findViewById(R.id.btnLogout);
         gvSports = (GridView) findViewById(R.id.home_GridSports);
+        btnCheckReservations = (Button) findViewById(R.id.btn_reservations);
 
-        //loadSports("3");
-        list = new ArrayList<String>();
         alDeportes = new ArrayList<Deportes>();
 
+       //TEMP
+        Log.d(TAG, "HOLA");
+
+
         //Gridview
-        //adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, list);
         sportAdapter = new SportsAdapter(this, alDeportes);
         gvSports.setAdapter(sportAdapter);
-        //gvSports.setAdapter(adapter);
-
 
 
         gvSports.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                /*Toast.makeText(getApplicationContext(),
-                        ((TextView) v).getText(), Toast.LENGTH_SHORT).show();*/
 
-                /*Toast.makeText(getApplicationContext(),
-                        alDeportes.get(position).id, Toast.LENGTH_SHORT).show();*/
 
                 ID_ACTUAL_SPORT = alDeportes.get(position).id;
                 SPORT_NAME = alDeportes.get(position).name;
@@ -119,11 +113,10 @@ public class home extends Activity {
 
 
 
-        /* en caso de que no se hizo login volver
         if (!session.isLoggedIn()) {
             logoutUser();
         }
-        */
+
 
         // Fetching user details from sqlite
         HashMap<String, String> user = db.getUserDetails();
@@ -139,7 +132,7 @@ public class home extends Activity {
         txtEmail.setText(email);
         txtAge.setText(age);
 
-        loadSports(usid);
+        loadSports("3");
 
 
         // Logout button click event
@@ -150,6 +143,18 @@ public class home extends Activity {
                 logoutUser();
             }
         });
+
+        btnCheckReservations.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), Reservations.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+
     }
 
     /**
@@ -184,7 +189,6 @@ public class home extends Activity {
                 Log.d(TAG, "Get Sports: " + response.toString());
                 hideDialog();
 
-                //txtName.setText("HI");
 
                 try {
 
@@ -198,38 +202,23 @@ public class home extends Activity {
                         //txtName.setText("ALI");
 
                        JSONObject sports = jObj.getJSONObject("sports");
-                        //JSONArray sports = jObj.getJSONArray("sports");
                         String sport_id;
                         String sport_name;
-                        //txtName.setText(sports.length());
 
                         Log.d(TAG, "Get Sports size: " + sports.length());
                         hideDialog();
-
-                        arrDepSports= new Deportes[sports.length()-1];
-                       // namesSports = new String[sports.length()-1];
 
 
                         for(int i=1; i<sports.length(); i++){
                             sport_id = sports.getJSONObject(Integer.toString(i)).getString("id");
                             sport_name = sports.getJSONObject(Integer.toString(i)).getString("name");
 
-                            list.add(i-1, sport_name);
-                            arrDepSports[i-1] = new Deportes(sport_id, sport_name);
                             alDeportes.add(new Deportes(sport_id, sport_name));
                         }
 
-
-
-                        //txtName.setText(arrDepSports[1].name);
-
                         gvSports.setAdapter(sportAdapter);
 
-
-
                         // Inserting row in users table
-                       // db.addUser(first_name, last_name, email, uid, created_at);
-
                          Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG);
 
 

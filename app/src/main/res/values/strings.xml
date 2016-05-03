@@ -16,7 +16,9 @@
     <string name="title_activity_profile_sport_information">ProfileSportInformation</string>
     <string name="btn_iniciarPartida">Iniciar partida</string>
     <string name="btn_back">Back</string>
+    <string name="btn_checkReservations">Reserv</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_pop_friends_or_random">PopFriendsOrRandom</string>
+    <string name="title_activity_reservations">Reservations</string>
 </resources>

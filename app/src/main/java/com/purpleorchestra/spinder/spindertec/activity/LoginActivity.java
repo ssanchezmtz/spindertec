@@ -78,7 +78,6 @@ public class LoginActivity extends Activity {
                 if (!email.isEmpty() && !password.isEmpty()) {
                     // login user
                     checkLogin(email, password);
-                    // temporalLogin();
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
@@ -155,6 +154,7 @@ public class LoginActivity extends Activity {
 
                         // Inserting row in users table
                         db.addUser(userid, fist_name, last_name, email, uid, created_at);
+
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,

@@ -108,6 +108,24 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return user;
     }
 
+    public String getUserID(){
+        String selectQuery = "SELECT " +KEY_ID +" FROM " + TABLE_USER;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        cursor.moveToFirst();
+        String userID="";
+
+        if (cursor.getCount() > 0) {
+            userID = cursor.getString(0);
+        }
+
+        cursor.close();
+        db.close();
+
+        return userID;
+
+    }
+
     /**
      * Re crate database Delete all tables and create them again
      * */

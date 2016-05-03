@@ -15,4 +15,7 @@ public class AppConfig {
 
     //Server informationProfileSport
     public static String URL_GETPROFILESPORT = "http://spinder.purpleorchestra.com/android_login_api/profileSportInformation.php";
+
+    // Server user getReservations
+    public static String URL_GETRESERVATIONS = "http://spinder.purpleorchestra.com/android_login_api/getReservations.php";
 }

@@ -43,7 +43,12 @@
         </activity>
         <activity
             android:name=".activity.PopFriendsOrRandom"
-            android:label="@string/title_activity_pop_friends_or_random" >
+            android:label="@string/title_activity_pop_friends_or_random"
+            android:theme="@style/AppTheme.CustomTheme" >
+        </activity>
+        <activity
+            android:name=".activity.Reservations"
+            android:label="@string/title_activity_reservations" >
         </activity>
     </application>
 

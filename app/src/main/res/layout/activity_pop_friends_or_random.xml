@@ -5,7 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.purpleorchestra.spinder.spindertec.activity.PopFriendsOrRandom"
-    android:background="#ffff3da0"
+    android:background="#ff57c9ff"
     android:id="@+id/pop">
 
     
@@ -14,10 +14,8 @@
         android:layout_height="wrap_content"
         android:text = "Friends"
         android:id="@+id/btnFriends"
-        android:layout_below="@+id/btnRandom"
-        android:layout_centerVertical = "true"
-        android:layout_centerHorizontal="true"
-    />
+        android:layout_below="@+id/scheduleTime"
+        android:layout_centerHorizontal="true" />
 
 
     <Button
@@ -25,9 +23,27 @@
         android:layout_height="wrap_content"
         android:text = "Random"
         android:id="@+id/btnRandom"
+        android:layout_below="@+id/btnFriends"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scheduleTime"
         android:layout_alignParentTop="true"
-        android:layout_centerVertical = "true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="45dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="08-08-1994"
+        android:id="@+id/txtCurrentDate"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        />
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

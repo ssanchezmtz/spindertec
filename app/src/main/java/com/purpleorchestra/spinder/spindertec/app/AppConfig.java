@@ -18,4 +18,8 @@ public class AppConfig {
 
     // Server user getReservations
     public static String URL_GETRESERVATIONS = "http://spinder.purpleorchestra.com/android_login_api/getReservations.php";
+
+    //Create or match reservation
+    public static String URL_PROCESSRESERVATION = "http://spinder.purpleorchestra.com/android_login_api/searchOrCreateReservation.php";
+
 }

@@ -50,6 +50,10 @@
             android:name=".activity.Reservations"
             android:label="@string/title_activity_reservations" >
         </activity>
+        <activity
+            android:name=".activity.RandomRequestReservation"
+            android:label="@string/title_activity_random_request_reservation" >
+        </activity>
     </application>
 
 </manifest>

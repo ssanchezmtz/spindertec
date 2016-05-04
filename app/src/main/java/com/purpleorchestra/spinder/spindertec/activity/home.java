@@ -131,8 +131,8 @@ public class home extends Activity {
         txtEmail.setText(email);
         txtAge.setText(age);
 
-        loadSports(usid);
-        //loadSports("3");
+        //loadSports(usid);
+        loadSports("3");
 
 
         // Logout button click event

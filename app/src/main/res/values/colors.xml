@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-
-    <color name="bg_login">#26ae90</color>
-    <color name="bg_register">#2e3237</color>
-    <color name="bg_main">#428bca</color>
+    <color name="colorPrimaryDark" >#0288D1</color>
+    <color name="colorPrimary" >#03A9F4</color>
+    <color name="colorPrimaryLight" >#B3E5FC</color>
+    <color name="colorAccent" >#FF5722</color>
     <color name="white">#ffffff</color>
-    <color name="input_login">#222222</color>
+    <color name="dark" >#212121</color>
+    <color name="colorGreyDark" >#727272</color>
+    <color name="colorGreyLight" >#B6B6B6</color>
+
+
+    <color name="bg_login">@color/colorPrimaryDark</color>
+    <color name="bg_register">@color/colorAccent</color>
+    <color name="bg_main">@color/colorPrimary</color>
+
+    <color name="input_login">@color/dark</color>
     <color name="input_login_hint">#999999</color>
     <color name="input_register">#888888</color>
     <color name="input_register_bg">#3b4148</color>
     <color name="input_register_hint">#5e6266</color>
-    <color name="btn_login">#26ae90</color>
-    <color name="btn_login_bg">#eceef1</color>
-    <color name="lbl_name">#333333</color>
-    <color name="btn_logut_bg">#ff6861</color>
-    <color name="btn_iniciarPartida_bg">#303F9F</color>
+    <color name="btn_login">@color/white</color>
+    <color name="btn_login_bg">@color/colorAccent</color>
+    <color name="lbl_name">@color/dark</color>
+    <color name="btn_logut_bg">@color/colorAccent</color>
+    <color name="btn_iniciarPartida_bg">@color/colorPrimaryDark</color>
 </resources>

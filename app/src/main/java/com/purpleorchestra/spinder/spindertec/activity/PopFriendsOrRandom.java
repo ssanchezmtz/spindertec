@@ -68,7 +68,6 @@ public class PopFriendsOrRandom extends Activity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 //Toast.makeText(adapterView.getContext(), (String) adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
                 selectScheduledTime = (String) adapterView.getItemAtPosition(position)+":00";
-                txtCurrentDate.setText(selectScheduledTime);
 
             }
 

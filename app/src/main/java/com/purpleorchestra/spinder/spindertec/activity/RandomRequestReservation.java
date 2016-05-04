@@ -94,6 +94,8 @@ public class RandomRequestReservation extends Activity {
 
                 } catch (JSONException e) {
 
+                    String sResult="Ya tienes una reservación en este horario";
+                    txtStatus.setText(sResult);
                     e.printStackTrace();
                 }
 

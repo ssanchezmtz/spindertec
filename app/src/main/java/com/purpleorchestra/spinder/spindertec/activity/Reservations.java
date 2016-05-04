@@ -59,12 +59,12 @@ public class Reservations extends Activity {
 
 
         // SqLite database handler
-        db = new SQLiteHandler(getApplicationContext());
-        String usid = db.getUserID();
+      //  db = new SQLiteHandler(getApplicationContext());
+        //String usid = db.getUserID();
 
 
-        loadReservations(usid);
-        //loadReservations("3"); //Cargar las reservaciones de un usuario
+       // loadReservations(usid);
+        loadReservations("3"); //Cargar las reservaciones de un usuario
         Log.d(TAG, "ALI");
 
 

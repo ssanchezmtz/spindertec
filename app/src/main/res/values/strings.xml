@@ -21,4 +21,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_pop_friends_or_random">PopFriendsOrRandom</string>
     <string name="title_activity_reservations">Reservations</string>
+    <string name="title_activity_searchfriends">Search Friends</string>
+    <string name="title_activity_addfriends">Add Friends</string>
+
+    <string name="btn_search_friend">Buscar</string>
+    <string name="btn_search_ad_friend">Buscar Amigos</string>
+    <string name="ad_friend">Añadir Amigos</string>
 </resources>

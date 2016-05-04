@@ -10,6 +10,10 @@ public class AppConfig {
     // Server user register url
     public static String URL_REGISTER = "http://spinder.purpleorchestra.com/android_login_api/register.php";
 
+    // Server user register url
+    public static String URL_ADDFRIEND = "http://spinder.purpleorchestra.com/android_login_api/addNewFriend.php";
+
+
     // Server user getSportsbyId url
     public static String URL_GETSPORTSBYID ="http://spinder.purpleorchestra.com/android_login_api/getSportsNameByUser.php";
 
@@ -18,4 +22,11 @@ public class AppConfig {
 
     // Server user getReservations
     public static String URL_GETRESERVATIONS = "http://spinder.purpleorchestra.com/android_login_api/getReservations.php";
+
+    // Server user getFriends
+    public static String URL_GETPEOPLE = "http://spinder.purpleorchestra.com/android_login_api/searchPeople.php";
+
+    // Server user getPeople
+    public static String URL_GETFRIENDS = "http://spinder.purpleorchestra.com/android_login_api/hasFriends.php";
+
 }

@@ -50,6 +50,14 @@
             android:name=".activity.Reservations"
             android:label="@string/title_activity_reservations" >
         </activity>
+        <activity
+            android:name=".activity.searchFriends"
+            android:label="@string/title_activity_searchfriends" >
+        </activity>
+        <activity
+            android:name=".activity.AddFriends"
+            android:label="@string/title_activity_addfriends" >
+        </activity>
     </application>
 
 </manifest>

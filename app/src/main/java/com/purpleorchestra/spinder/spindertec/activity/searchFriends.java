@@ -2,8 +2,11 @@ package com.purpleorchestra.spinder.spindertec.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -12,8 +15,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.purpleorchestra.spinder.spindertec.R;
-import com.purpleorchestra.spinder.spindertec.Templates.Reservation;
-import com.purpleorchestra.spinder.spindertec.adapter.ReservationsAdapter;
+import com.purpleorchestra.spinder.spindertec.Templates.Friends;
+import com.purpleorchestra.spinder.spindertec.adapter.friendsAdapter;
 import com.purpleorchestra.spinder.spindertec.app.AppConfig;
 import com.purpleorchestra.spinder.spindertec.app.AppController;
 import com.purpleorchestra.spinder.spindertec.helper.SQLiteHandler;
@@ -25,18 +28,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Reservations extends Activity {
+/**
+ * Created by Spinder on 03/05/16.
+ */
+public class searchFriends extends Activity {
 
-    private static final String TAG = Reservation.class.getSimpleName();
-
-
-    private ListView listViewReservations;
-    private ArrayList<Reservation> alReservations;
-
-    //Adapter of views for ListView
-    private ReservationsAdapter reservationAdapter;
+    private static final String TAG = searchFriends.class.getSimpleName();
+    private Button btnAdFriend;
+    private ListView listViewFriends;
+    private ArrayList<Friends> alFriends;
+    private friendsAdapter myFriendsAdapter;
     private SQLiteHandler db;
-
     private ProgressDialog pDialog;
 
 
@@ -44,13 +46,15 @@ public class Reservations extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reservations);
+        setContentView(R.layout.activity_search_friend);
 
-        alReservations = new ArrayList<Reservation>();
+       alFriends = new ArrayList<Friends>();
+        listViewFriends = (ListView) findViewById(R.id.listFriends);
+        myFriendsAdapter = new friendsAdapter(this,alFriends);
+        listViewFriends.setAdapter(myFriendsAdapter);
 
-        listViewReservations = (ListView) findViewById(R.id.listReservations);
-        reservationAdapter = new ReservationsAdapter(this, alReservations);
-        listViewReservations.setAdapter(reservationAdapter);
+        btnAdFriend = (Button) findViewById(R.id.btnAdFriend);
+
 
 
         // Progress dialog
@@ -60,31 +64,45 @@ public class Reservations extends Activity {
 
         // SqLite database handler
         db = new SQLiteHandler(getApplicationContext());
-        String usid = db.getUserID();
+        final String usid = db.getUserID();
+
+        findPeople(usid);
 
 
-        loadReservations(usid);
+
+        btnAdFriend.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),
+                        AddFriends.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+//
+
+//        loadReservations(usid);
         //loadReservations("3"); //Cargar las reservaciones de un usuario
-        Log.d(TAG, "ALI");
 
 
     }
 
-    private void loadReservations(final String userID) {
+    private void findPeople(final String userID) {
 
         // Tag used to cancel the request
-        String tag_string_req = "load sports";
+        String tag_string_req = "load people";
 
-        pDialog.setMessage("Loading sports ...");
+        pDialog.setMessage("Loading people ...");
         showDialog();
 
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
-                AppConfig.URL_GETRESERVATIONS, new Response.Listener<String>() {
+                AppConfig.URL_GETFRIENDS, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Get reservations: " + response.toString());
+                Log.d(TAG, "Get PEOPLE: " + response.toString());
                 hideDialog();
 
                 try {
@@ -97,40 +115,38 @@ public class Reservations extends Activity {
                         // Now store the user in sqlite
 
 
-                        JSONObject reservations = jObj.getJSONObject("reservations");
+                        JSONObject user = jObj.getJSONObject("user");
 
 
-                        String reservationSport;
-                        String reservationFacility;
-                        String reservationScheduleDate;
-                        String reservationScheduleTime;
-                        String reservationOpponentFirstName;
-                        String reservationOpponentLastName;
-                        String reservationOopponent;
+                        String userID;
+                        String userFirstName;
+                        String userLastName;
+                        String userEmail;
 
-                        Log.d(TAG, "Get Reservation size: " + reservations.length());
+                        Log.d(TAG, "Get users size: " + user.length());
                         hideDialog();
+                        int size = user.length();
+
+                        for (int i = 0; i < user.length()-1; i++) {
+                            Log.d(TAG, i+"");
+                            hideDialog();
+                            userID = user.getJSONObject(Integer.toString(i)).getString("id");
+                            userFirstName = user.getJSONObject(Integer.toString(i)).getString("first_name");
+                            userLastName = user.getJSONObject(Integer.toString(i)).getString("last_name");
+                            userEmail = user.getJSONObject(Integer.toString(i)).getString("email");
+
+                            Log.d(TAG, "i = " + i + " " + size +" Adding: " + userID + " " + userFirstName + " " + userLastName + " " + userEmail);
+                            hideDialog();
+
+                            alFriends.add(new Friends(userID,userFirstName,userLastName,userEmail));
 
 
-                        for (int i = 1; i < reservations.length(); i++) {
-                            reservationSport = reservations.getJSONObject(Integer.toString(i)).getString("sp_sports.name");
-                            reservationFacility = reservations.getJSONObject(Integer.toString(i)).getString("sp_facilities.name");
-                            reservationScheduleDate = reservations.getJSONObject(Integer.toString(i)).getString("sp_schedules.date");
-                            reservationScheduleTime = reservations.getJSONObject(Integer.toString(i)).getString("sp_schedules.time");
-                            reservationOpponentFirstName = reservations.getJSONObject(Integer.toString(i)).getString("sp_user.first_name");
-                            reservationOpponentLastName = reservations.getJSONObject(Integer.toString(i)).getString("sp_user.last_name");
-
-
-                            reservationOopponent = reservationOpponentFirstName +" " +reservationOpponentLastName;
-
-                            alReservations.add(
-                                    new Reservation(reservationSport,reservationFacility,reservationScheduleDate,reservationScheduleTime,
-                                            reservationOopponent)
-                            );
+                            Log.d(TAG,  "i = " + i + " " + size + " Adding 2: " + alFriends.get(i).friendUserId + " " + alFriends.get(i).friendsFirstName  + " " + alFriends.get(i).friendsLastName + " " + alFriends.get(i).friendsEmail);
+                            hideDialog();
 
                         }
 
-                        listViewReservations.setAdapter(reservationAdapter);
+                        listViewFriends.setAdapter(myFriendsAdapter);
 
                         // Inserting row in users table
                         Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG);
@@ -165,7 +181,7 @@ public class Reservations extends Activity {
             protected Map<String, String> getParams() {
                 // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("userID", userID);
+                params.put("id", userID);
 
                 return params;
             }
@@ -188,6 +204,5 @@ public class Reservations extends Activity {
         if (pDialog.isShowing())
             pDialog.dismiss();
     }
-
 
 }

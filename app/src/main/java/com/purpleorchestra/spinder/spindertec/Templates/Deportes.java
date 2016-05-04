@@ -7,10 +7,6 @@ public class Deportes {
     public String id;
     public String name;
 
-    public Deportes() {
-        this.id="0";
-        this.name="Tenis";
-    }
 
     public Deportes(String id, String name){
         this.id=id;

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/abc_search_url_text_pressed">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="@color/bright_foreground_disabled_material_light"
+        android:id="@+id/fondo"></FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tennis"
+        android:id="@+id/textView"
+        android:layout_gravity="center"
+        android:background="@mipmap/2"
+        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:elegantTextHeight="true"
+        android:fontFamily="@string/app_name"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:capitalize="words"
+        android:editable="true"
+        android:textStyle="bold"
+        android:textSize="@dimen/design_fab_size_normal"
+        android:textAlignment="center"
+        android:textAppearance="@style/AppTheme.AppBarOverlay"
+        android:shadowColor="@color/abc_color_highlight_material" />
+
+    <ImageView
+        android:layout_width="189dp"
+        android:layout_height="252dp"
+        android:id="@+id/imageView"
+        style="@style/Base.TextAppearance.AppCompat.Subhead"
+        android:background="@mipmap/2"
+        android:src="@mipmap/ultima"
+        android:layout_gravity="center" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Play"
+        android:id="@+id/button"
+        android:textStyle="bold"
+        android:textColor="@color/design_textinput_error_color_light"
+        android:textSize="@dimen/abc_action_button_min_width_overflow_material"
+        android:background="@drawable/abc_scrubber_track_mtrl_alpha"
+        android:backgroundTint="@drawable/abc_ab_share_pack_mtrl_alpha" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unfollow"
+        android:id="@+id/button2"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="@dimen/abc_action_button_min_width_overflow_material"
+        android:background="@drawable/abc_scrubber_track_mtrl_alpha"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rankings"
+        android:id="@+id/button3"
+        android:textColor="@android:color/holo_green_dark"
+        android:clickable="true"
+        android:textSize="@dimen/abc_action_button_min_width_overflow_material"
+        android:background="@drawable/abc_scrubber_track_mtrl_alpha"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Live chat"
+        android:id="@+id/button4"
+        android:layout_gravity="right"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/abc_action_button_min_width_overflow_material"
+        android:background="@drawable/abc_scrubber_track_mtrl_alpha"
+        android:textStyle="bold" />
+</LinearLayout>

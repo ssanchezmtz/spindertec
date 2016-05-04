@@ -16,7 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.purpleorchestra.spinder.spindertec.R;
 import com.purpleorchestra.spinder.spindertec.Templates.Reservation;
-import com.purpleorchestra.spinder.spindertec.adapter.ReservationsAdapter;
+import com.purpleorchestra.spinder.spindertec.adapter.HistorialAdapter;
 import com.purpleorchestra.spinder.spindertec.app.AppConfig;
 import com.purpleorchestra.spinder.spindertec.app.AppController;
 import com.purpleorchestra.spinder.spindertec.helper.SQLiteHandler;
@@ -28,16 +28,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Reservations extends Activity {
+public class GamesHistorial extends Activity {
 
-    private static final String TAG = Reservation.class.getSimpleName();
+    private static final String TAG = GamesHistorial.class.getSimpleName();
 
 
-    private ListView listViewReservations;
-    private ArrayList<Reservation> alReservations;
+    private ListView listViewHistorial;
+    private ArrayList<Reservation> alGames;
 
     //Adapter of views for ListView
-    private ReservationsAdapter reservationAdapter;
+    private HistorialAdapter historialAdapter;
     private SQLiteHandler db;
     private Button btnReturnHome;
 
@@ -48,15 +48,14 @@ public class Reservations extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reservations);
+        setContentView(R.layout.activity_historial);
 
-        alReservations = new ArrayList<Reservation>();
+        alGames = new ArrayList<Reservation>();
 
-        listViewReservations = (ListView) findViewById(R.id.listHistory);
-        reservationAdapter = new ReservationsAdapter(this, alReservations);
-        listViewReservations.setAdapter(reservationAdapter);
-        btnReturnHome = (Button) findViewById(R.id.btnGetReturnHome);
-
+        listViewHistorial = (ListView) findViewById(R.id.listHistory);
+        historialAdapter = new HistorialAdapter(this, alGames);
+        listViewHistorial.setAdapter(historialAdapter);
+        btnReturnHome = (Button) findViewById(R.id.btnReturnHome);
 
 
         // Progress dialog
@@ -64,17 +63,14 @@ public class Reservations extends Activity {
         pDialog.setCancelable(false);
 
 
-        //SqLite database handler
-      db = new SQLiteHandler(getApplicationContext());
+        // SqLite database handler
+        db = new SQLiteHandler(getApplicationContext());
         String usid = db.getUserID();
 
 
-       // loadReservations(usid);
+        loadGames(usid);
         //loadReservations("3"); //Cargar las reservaciones de un usuario
-
-        loadReservations(usid);
-        //loadReservations("3"); //Cargar las reservaciones de un usuario
-        //Log.d(TAG, "ALI");
+        Log.d(TAG, "ALI");
 
         btnReturnHome.setOnClickListener(new View.OnClickListener() {
 
@@ -87,24 +83,23 @@ public class Reservations extends Activity {
         });
 
 
-
     }
 
-    private void loadReservations(final String userID) {
+    private void loadGames(final String userID) {
 
         // Tag used to cancel the request
         String tag_string_req = "load sports";
 
-        pDialog.setMessage("Loading sports ...");
+        pDialog.setMessage("Loading All Games ...");
         showDialog();
 
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
-                AppConfig.URL_GETRESERVATIONS, new Response.Listener<String>() {
+                AppConfig.URL_GETGAMESHISTORY, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Get reservations: " + response.toString());
+                Log.d(TAG, "Get all games: " + response.toString());
                 hideDialog();
 
                 try {
@@ -143,14 +138,14 @@ public class Reservations extends Activity {
 
                             reservationOopponent = reservationOpponentFirstName +" " +reservationOpponentLastName;
 
-                            alReservations.add(
+                            alGames.add(
                                     new Reservation(reservationSport,reservationFacility,reservationScheduleDate,reservationScheduleTime,
                                             reservationOopponent)
                             );
 
                         }
 
-                        listViewReservations.setAdapter(reservationAdapter);
+                        listViewHistorial.setAdapter(historialAdapter);
 
                         // Inserting row in users table
                         Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG);

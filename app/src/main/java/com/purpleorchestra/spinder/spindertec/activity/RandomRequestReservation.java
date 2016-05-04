@@ -14,6 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.purpleorchestra.spinder.spindertec.R;
 import com.purpleorchestra.spinder.spindertec.app.AppConfig;
 import com.purpleorchestra.spinder.spindertec.app.AppController;
+import com.purpleorchestra.spinder.spindertec.helper.SQLiteHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +27,7 @@ public class RandomRequestReservation extends Activity {
     private static final String TAG = LoginActivity.class.getSimpleName();
     private ProgressDialog pDialog;
     private TextView txtStatus;
+    private SQLiteHandler db;
 
 
     @Override
@@ -39,8 +41,10 @@ public class RandomRequestReservation extends Activity {
         // Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
+        db = new SQLiteHandler(getApplicationContext());
+        final String usid = db.getUserID();
 
-        processReservation("3", "1", PopFriendsOrRandom.selectScheduledTime);
+        processReservation(usid, "1", PopFriendsOrRandom.selectScheduledTime);
     }
 
 

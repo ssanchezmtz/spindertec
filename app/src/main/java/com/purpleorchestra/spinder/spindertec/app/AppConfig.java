@@ -13,6 +13,9 @@ public class AppConfig {
     // Server user register url
     public static String URL_ADDFRIEND = "http://spinder.purpleorchestra.com/android_login_api/addNewFriend.php";
 
+    // Server user register url
+    public static String URL_GETGAMESHISTORY = "http://spinder.purpleorchestra.com/android_login_api/getHistory.php";
+
 
     // Server user getSportsbyId url
     public static String URL_GETSPORTSBYID ="http://spinder.purpleorchestra.com/android_login_api/getSportsNameByUser.php";

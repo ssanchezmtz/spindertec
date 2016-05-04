@@ -69,8 +69,8 @@ public class ProfileSportInformation extends Activity {
         session = new SessionManager(getApplicationContext());
 
 
-        txtSportName.setText(home.SPORT_NAME);
-        loadSportDetails("1", home.ID_ACTUAL_SPORT);
+      //  txtSportName.setText(home.SPORT_NAME);
+      //  loadSportDetails("1", home.ID_ACTUAL_SPORT);
 
         // btn Return profile
         btnCrearPartido.setOnClickListener(new View.OnClickListener() {

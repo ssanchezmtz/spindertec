@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.purpleorchestra.spinder.spindertec.R;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -87,6 +88,15 @@ public class PopFriendsOrRandom extends Activity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),
                         RandomRequestReservation.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        btnFriends.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),
+                        searchFriends.class);
                 startActivity(i);
                 finish();
             }

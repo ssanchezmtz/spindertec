@@ -9,44 +9,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.Request.Method;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.purpleorchestra.spinder.spindertec.R;
-import com.purpleorchestra.spinder.spindertec.Templates.Deportes;
-import com.purpleorchestra.spinder.spindertec.adapter.SportsAdapter;
-import com.purpleorchestra.spinder.spindertec.app.AppConfig;
-import com.purpleorchestra.spinder.spindertec.app.AppController;
 import com.purpleorchestra.spinder.spindertec.helper.SQLiteHandler;
 import com.purpleorchestra.spinder.spindertec.helper.SessionManager;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class home extends Activity {
     private static final String TAG = home.class.getSimpleName();
     private TextView txtName;
     private TextView txtEmail;
-    private TextView txtAge;
-    private GridView gvSports;
+//    private TextView txtAge;
+//    private GridView gvSports;
     private Button btnLogout;
     private Button btnCheckReservations;
+    private Button btnStartGame;
+    private Button btnHistory;
 
     //sports
-    private SportsAdapter sportAdapter;
-    private ArrayList<Deportes> alDeportes;
+//    private SportsAdapter sportAdapter;
+//    private ArrayList<Deportes> alDeportes;
 
     private SQLiteHandler db;
     private SessionManager session;
@@ -54,8 +39,8 @@ public class home extends Activity {
     private ProgressDialog pDialog;
 
     //SPORT STATIC INFORMATION
-    public static String ID_ACTUAL_SPORT ="-1";
-    public static String SPORT_NAME = "";
+//    public static String ID_ACTUAL_SPORT ="-1";
+//    public static String SPORT_NAME = "";
 
 
 
@@ -66,23 +51,25 @@ public class home extends Activity {
 
         txtName = (TextView) findViewById(R.id.home_username);
         txtEmail = (TextView) findViewById(R.id.home_email);
-        txtAge = (TextView) findViewById(R.id.homAge);
+
         btnLogout = (Button) findViewById(R.id.btnLogout);
-        gvSports = (GridView) findViewById(R.id.home_GridSports);
-        btnCheckReservations = (Button) findViewById(R.id.btn_reservations);
+        btnHistory = (Button) findViewById(R.id.btn_History);
+        btnStartGame = (Button) findViewById(R.id.btn_BeginPartida);
+        //gvSports = (GridView) findViewById(R.id.home_GridSports);
+        btnCheckReservations = (Button) findViewById(R.id.btn_CheckReservations);
 
-        alDeportes = new ArrayList<Deportes>();
+//        alDeportes = new ArrayList<Deportes>();
 
-       //TEMP
+  //     //TEMP
         Log.d(TAG, "HOLA");
 
 
         //Gridview
-        sportAdapter = new SportsAdapter(this, alDeportes);
-        gvSports.setAdapter(sportAdapter);
+    //    sportAdapter = new SportsAdapter(this, alDeportes);
+     //   gvSports.setAdapter(sportAdapter);
 
 
-        gvSports.setOnItemClickListener(new OnItemClickListener() {
+/*        gvSports.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
 
@@ -95,7 +82,7 @@ public class home extends Activity {
                 startActivity(i);
                 finish();
             }
-        });
+        });*/
 
 
         // Progress dialog
@@ -124,16 +111,23 @@ public class home extends Activity {
         String last_name = user.get("last_name");
         String name = first_name + " " + last_name;
         String email = user.get("email");
-        String age = "22"; //user.toString();
+        //String age = "22"; //user.toString();
 
         // Displaying the user details on the screen
         txtName.setText(name);
         txtEmail.setText(email);
-        txtAge.setText(age);
+        //txtAge.setText(age);
 
-        loadSports(usid);
+        //loadSports(usid);
         //loadSports("3");
 
+        btnStartGame.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent i = new Intent(home.this, PopFriendsOrRandom.class);
+                startActivity(i);
+            }
+        });
 
         // Logout button click event
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -149,6 +143,16 @@ public class home extends Activity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), Reservations.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), GamesHistorial.class);
                 startActivity(i);
                 finish();
             }
@@ -172,7 +176,7 @@ public class home extends Activity {
         finish();
     }
 
-    private void loadSports(final String id){
+   /* private void loadSports(final String id){
 
         // Tag used to cancel the request
         String tag_string_req = "load sports";
@@ -261,7 +265,7 @@ public class home extends Activity {
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
 
-    }
+    }*/
 
     private void showDialog() {
         if (!pDialog.isShowing())

@@ -25,12 +25,12 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listReservations"
+        android:layout_alignBottom="@id/listHistory"
         android:gravity="center"
         android:layout_marginTop="-50dp">
 
         <Button
-            android:id="@+id/btnGetReturnHome"
+            android:id="@+id/btnReturnHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/btn_logut_bg"
@@ -39,5 +39,3 @@
             android:textColor="@color/white" />
     </LinearLayout>
 </LinearLayout>
-
-

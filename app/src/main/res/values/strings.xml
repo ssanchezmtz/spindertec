@@ -17,10 +17,12 @@
     <string name="btn_iniciarPartida">Iniciar partida</string>
     <string name="btn_back">Back</string>
     <string name="btn_checkReservations">Reserv</string>
+    <string name="txt_Status">Status request</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_pop_friends_or_random">PopFriendsOrRandom</string>
     <string name="title_activity_reservations">Reservations</string>
+    <string name="title_activity_random_request_reservation">RandomRequestReservation</string>
     <string name="title_activity_searchfriends">Search Friends</string>
     <string name="title_activity_addfriends">Add Friends</string>
 

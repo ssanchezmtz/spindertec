@@ -29,4 +29,8 @@ public class AppConfig {
     // Server user getPeople
     public static String URL_GETFRIENDS = "http://spinder.purpleorchestra.com/android_login_api/hasFriends.php";
 
+
+    //Create or match reservation
+    public static String URL_PROCESSRESERVATION = "http://spinder.purpleorchestra.com/android_login_api/searchOrCreateReservation.php";
+
 }

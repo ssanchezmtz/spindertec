@@ -16,8 +16,9 @@
     <string name="title_activity_profile_sport_information">ProfileSportInformation</string>
     <string name="btn_iniciarPartida">Jugar</string>
     <string name="btn_back">Back</string>
-    <string name="btn_checkReservations">Reserv</string>
+    <string name="btn_checkReservations">Encuentros</string>
     <string name="txt_Status">Status request</string>
+    <string name="txt_FriendsStatus">Status request</string>
     <string name="title_activity_searchfriends">Search Friends</string>
     <string name="title_activity_addfriends">Add Friends</string>
 
@@ -26,7 +27,12 @@
     <string name="title_activity_pop_friends_or_random">PopFriendsOrRandom</string>
     <string name="title_activity_reservations">Reservations</string>
     <string name="title_activity_random_request_reservation">RandomRequestReservation</string>
-    <string name="btn_search_ad_friend">Buscar</string>
+    <string name="btn_search_ad_friend">Añadir amigos</string>
     <string name="title_ganesHistorial">Historial</string>
     <string name="btn_history">Historial</string>
+    <string name="user_home_name">Jonh Doe</string>
+    <string name="user_home_email">myawesomemail@itesm.mx</string>
+    <string name="select_a_friend">Selecciona a tus amigos</string>
+    <string name="hint_search_name">Buscar por nombre ...</string>
+    <string name="btn_search_ad_new_friend">Buscar</string>
 </resources>

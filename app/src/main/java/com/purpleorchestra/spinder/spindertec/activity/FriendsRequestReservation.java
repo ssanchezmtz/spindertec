@@ -1,9 +1,8 @@
 package com.purpleorchestra.spinder.spindertec.activity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,9 +22,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RandomRequestReservation extends AppCompatActivity {
+public class FriendsRequestReservation extends Activity {
 
-    private static final String TAG = RandomRequestReservation.class.getSimpleName();
+    private static final String TAG = FriendsRequestReservation.class.getSimpleName();
     private ProgressDialog pDialog;
     private TextView txtStatus;
     private SQLiteHandler db;
@@ -34,13 +33,9 @@ public class RandomRequestReservation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_random_request_reservation);
+        setContentView(R.layout.activity_friend_request_reservation);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
-        toolbar.setTitle("Encuentros");
-        setSupportActionBar(toolbar);
-
-        txtStatus = (TextView) findViewById(R.id.txtStatus);
+        txtStatus = (TextView) findViewById(R.id.txtFriendsStatus);
 
 
         // Progress dialog
@@ -190,3 +185,5 @@ public class RandomRequestReservation extends AppCompatActivity {
             pDialog.dismiss();
     }
 }
+
+

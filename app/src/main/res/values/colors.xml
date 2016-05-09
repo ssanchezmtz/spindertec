@@ -6,6 +6,7 @@
     <color name="colorAccent" >#FF5722</color>
     <color name="white">#ffffff</color>
     <color name="dark" >#212121</color>
+    <color name="transparent" >#00727272</color>
     <color name="colorGreyDark" >#727272</color>
     <color name="colorGreyLight" >#B6B6B6</color>
 
@@ -17,7 +18,8 @@
     <color name="input_login">@color/dark</color>
     <color name="input_login_hint">#999999</color>
     <color name="input_register">#888888</color>
-    <color name="input_register_bg">#3b4148</color>
+    <color name="input_register_bg">#FFF</color>
+    <color name="input_dark_bg">#3b4148</color>
     <color name="input_register_hint">#5e6266</color>
     <color name="btn_login">@color/white</color>
     <color name="btn_login_bg">@color/colorAccent</color>

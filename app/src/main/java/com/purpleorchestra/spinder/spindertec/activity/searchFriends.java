@@ -1,9 +1,10 @@
 package com.purpleorchestra.spinder.spindertec.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +32,7 @@ import java.util.Map;
 /**
  * Created by Spinder on 03/05/16.
  */
-public class searchFriends extends Activity {
+public class searchFriends extends AppCompatActivity {
 
     private static final String TAG = searchFriends.class.getSimpleName();
     private Button btnAdFriend;
@@ -47,6 +48,10 @@ public class searchFriends extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_friend);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
+        toolbar.setTitle("Elige tu contrincante");
+        setSupportActionBar(toolbar);
 
        alFriends = new ArrayList<Friends>();
         listViewFriends = (ListView) findViewById(R.id.listFriends);

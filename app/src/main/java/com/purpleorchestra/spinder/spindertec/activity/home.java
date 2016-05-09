@@ -3,13 +3,15 @@ package com.purpleorchestra.spinder.spindertec.activity;
 /**
  * Created by Spinder on 24/04/16.
  */
-import android.app.Activity;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.purpleorchestra.spinder.spindertec.R;
@@ -18,7 +20,7 @@ import com.purpleorchestra.spinder.spindertec.helper.SessionManager;
 
 import java.util.HashMap;
 
-public class home extends Activity {
+public class home extends AppCompatActivity {
     private static final String TAG = home.class.getSimpleName();
     private TextView txtName;
     private TextView txtEmail;
@@ -26,7 +28,7 @@ public class home extends Activity {
 //    private GridView gvSports;
     private Button btnLogout;
     private Button btnCheckReservations;
-    private Button btnStartGame;
+    private ImageView btnStartGame;
     private Button btnHistory;
 
     //sports
@@ -49,19 +51,24 @@ public class home extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
+        setSupportActionBar(toolbar);
+
+
+
         txtName = (TextView) findViewById(R.id.home_username);
-        txtEmail = (TextView) findViewById(R.id.home_email);
+//        txtEmail = (TextView) findViewById(R.id.home_email);
 
         btnLogout = (Button) findViewById(R.id.btnLogout);
         btnHistory = (Button) findViewById(R.id.btn_History);
-        btnStartGame = (Button) findViewById(R.id.btn_BeginPartida);
+        btnStartGame = (ImageView) findViewById(R.id.btn_BeginPartida);
         //gvSports = (GridView) findViewById(R.id.home_GridSports);
         btnCheckReservations = (Button) findViewById(R.id.btn_CheckReservations);
 
 //        alDeportes = new ArrayList<Deportes>();
 
   //     //TEMP
-        Log.d(TAG, "HOLA");
+//        Log.d(TAG, "HOLA");
 
 
         //Gridview
@@ -114,12 +121,12 @@ public class home extends Activity {
         //String age = "22"; //user.toString();
 
         // Displaying the user details on the screen
-        txtName.setText(name);
-        txtEmail.setText(email);
+        txtName.setText("Hola "+first_name);
+//        txtEmail.setText(email);
         //txtAge.setText(age);
 
         //loadSports(usid);
-        loadSports("3");
+        //loadSports("3");
         //loadSports("3");
 
         btnStartGame.setOnClickListener(new View.OnClickListener() {

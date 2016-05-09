@@ -1,9 +1,10 @@
 package com.purpleorchestra.spinder.spindertec.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Reservations extends Activity {
+public class Reservations extends AppCompatActivity {
 
     private static final String TAG = Reservation.class.getSimpleName();
 
@@ -49,6 +50,11 @@ public class Reservations extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservations);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
+        toolbar.setTitle("Historial de Juegos");
+        setSupportActionBar(toolbar);
+
 
         alReservations = new ArrayList<Reservation>();
 

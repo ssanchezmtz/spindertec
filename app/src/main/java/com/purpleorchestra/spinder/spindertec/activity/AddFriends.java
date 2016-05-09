@@ -1,8 +1,9 @@
 package com.purpleorchestra.spinder.spindertec.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,7 +33,7 @@ import java.util.Map;
 /**
  * Created by Spinder on 03/05/16.
  */
-public class AddFriends extends Activity {
+public class AddFriends extends AppCompatActivity {
 
     private static final String TAG = AddFriends.class.getSimpleName();
     private Button btnSearch;
@@ -51,6 +52,10 @@ public class AddFriends extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ad_friend);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
+        toolbar.setTitle("Añadir amigos");
+        setSupportActionBar(toolbar);
 
         inputName = (EditText) findViewById(R.id.ad_friend_name);
         btnSearch = (Button) findViewById(R.id.btnSearch);
@@ -200,6 +205,7 @@ public class AddFriends extends Activity {
                 // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("first_name", userName);
+
 
                 return params;
             }

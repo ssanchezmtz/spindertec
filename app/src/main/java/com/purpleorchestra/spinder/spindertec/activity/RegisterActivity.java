@@ -3,10 +3,12 @@ package com.purpleorchestra.spinder.spindertec.activity;
 /**
  * Created by Spinder on 24/04/16.
  */
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +30,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+
 
 public class RegisterActivity extends Activity {
     private static final String TAG = RegisterActivity.class.getSimpleName();
@@ -81,7 +85,23 @@ public class RegisterActivity extends Activity {
                 String password = inputPassword.getText().toString().trim();
 
                 if (!first_name.isEmpty() && !last_name.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-                    registerUser(first_name, last_name, email, password);
+                    if(validateEmail(email)) {
+                        registerUser(first_name, last_name, email, password);
+
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                                startActivity(i);
+                                finish();
+                            }
+                        }, 3000);
+
+
+                    } else{
+                        Toast.makeText(getApplicationContext(),
+                                "Only @itesm.mx!", Toast.LENGTH_LONG);
+                    }
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "Please enter your details!", Toast.LENGTH_LONG)
@@ -107,12 +127,32 @@ public class RegisterActivity extends Activity {
      * Function to store user in MySQL database will post params(tag, name,
      * email, password) to register url
      * */
+    private boolean validateEmail(final String email){
+        String domain = "@itesm.mx";
+        String tempEmail;
+        String tempName;
+
+        tempName = email.replace(domain, "");
+        tempEmail = email.replace(tempName, "");
+
+        if(tempEmail.equals(domain)){
+            return true;
+        } else {
+            Toast.makeText(getApplicationContext(),
+                    "Only not equal "+tempEmail+" to "+domain, Toast.LENGTH_LONG)
+                    .show();
+
+            return false;
+        }
+
+    }
+
     private void registerUser(final String first_name, final String last_name, final String email,
                               final String password) {
         // Tag used to cancel the request
         String tag_string_req = "req_register";
 
-        pDialog.setMessage("Registering ...");
+        pDialog.setMessage("Creando Usuario ...");
         showDialog();
 
         StringRequest strReq = new StringRequest(Method.POST,
@@ -142,7 +182,7 @@ public class RegisterActivity extends Activity {
                         // Inserting row in users table
                         db.addUser(usid, first_name, last_name, email, uid, created_at);
 
-                        Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Usuario creado correctamente, intenta accesar ahora!", Toast.LENGTH_LONG).show();
 
                         // Launch login activity
                         Intent intent = new Intent(

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/bg_register"
+    android:background="@color/colorPrimaryDark"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp" >
@@ -15,6 +15,13 @@
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp" >
+
+        <ImageView
+            android:id="@+id/login_logo"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/logo"
+            android:layout_marginBottom="20dp"/>
 
         <EditText
             android:id="@+id/first_name"
